@@ -1,0 +1,347 @@
+{
+  "version": 1,
+  "updated": "2026-10-20",
+  "about": "Rule database for mitv. risk=safe|caution|protected. profiles are cumulative: light < patchwall < aggressive. 'breaks' is what the user loses. Every entry is a prior, not a verdict: run `mitv scan` to see what is actually installed on the device.",
+  "rules": [
+    {
+      "package": "com.mitv.tvhome",
+      "name": "PatchWall home screen",
+      "category": "launcher",
+      "risk": "caution",
+      "profiles": ["patchwall"],
+      "requires": ["home-replacement"],
+      "breaks": "Home screen, until another launcher is active",
+      "note": "The main sponsored-content surface on Mi TV. Only removable after a replacement launcher is the active HOME."
+    },
+    {
+      "package": "com.mitv.videoworld",
+      "name": "PatchWall video shelf / promo feed",
+      "category": "ads",
+      "risk": "safe",
+      "profiles": ["light"],
+      "breaks": "PatchWall video carousel",
+      "note": "Feeds the promotional rows on the stock home screen."
+    },
+    {
+      "package": "com.mitv.alwaysonvideo",
+      "name": "Always-on video promos",
+      "category": "ads",
+      "risk": "safe",
+      "profiles": ["light"],
+      "breaks": "Screensaver promo video",
+      "note": "Plays promotional video when idle."
+    },
+    {
+      "package": "com.mitv.shop",
+      "name": "Mi Store / shopping surface",
+      "category": "storefront",
+      "risk": "safe",
+      "profiles": ["light"],
+      "breaks": "In-TV shopping tile",
+      "note": "Storefront, not a media app."
+    },
+    {
+      "package": "com.xiaomi.mitv.shop",
+      "name": "Mi Store (alternate package)",
+      "category": "storefront",
+      "risk": "safe",
+      "profiles": ["light"],
+      "breaks": "In-TV shopping tile",
+      "applies_to": ["xiaomi", "mitv", "mi tv"]
+    },
+    {
+      "package": "com.mitv.appstore",
+      "name": "Mi app store",
+      "category": "storefront",
+      "risk": "safe",
+      "profiles": ["light"],
+      "breaks": "Mi app store (Play Store still works)",
+      "note": "Second app store; ads and auto-installs live here."
+    },
+    {
+      "package": "com.mitv.gamecenter",
+      "name": "Mi game center",
+      "category": "games",
+      "risk": "safe",
+      "profiles": ["light"],
+      "breaks": "Game hub and its promos"
+    },
+    {
+      "package": "com.mitv.gallery",
+      "name": "Mi Gallery / screensaver",
+      "category": "ads",
+      "risk": "safe",
+      "profiles": ["light"],
+      "breaks": "Built-in photo/screensaver viewer",
+      "note": "Frequently doubles as an ad/screensaver slot."
+    },
+    {
+      "package": "com.xiaomi.tv.gallery",
+      "name": "Mi TV screensaver gallery",
+      "category": "ads",
+      "risk": "safe",
+      "profiles": ["light"],
+      "breaks": "Ambient screensaver",
+      "applies_to": ["xiaomi", "mitv", "mi tv"]
+    },
+    {
+      "package": "com.mitv.mtservices",
+      "name": "Mi TV services / telemetry",
+      "category": "telemetry",
+      "risk": "safe",
+      "profiles": ["light"],
+      "breaks": "Background Mi services + usage reporting",
+      "note": "No user-facing feature. Removing it is the usual first step."
+    },
+    {
+      "package": "com.mitv.mservices",
+      "name": "Mi services (alternate package)",
+      "category": "telemetry",
+      "risk": "safe",
+      "profiles": ["light"],
+      "breaks": "Background Mi services",
+      "applies_to": ["xiaomi", "mitv", "mi tv"]
+    },
+    {
+      "package": "com.xiaomi.mitv.assistant.manual",
+      "name": "User manual / help app",
+      "category": "bloat",
+      "risk": "safe",
+      "profiles": ["light"],
+      "breaks": "In-TV manual"
+    },
+    {
+      "package": "com.mitv.remotecontroller.service",
+      "name": "Mi remote app service",
+      "category": "telemetry",
+      "risk": "caution",
+      "profiles": ["aggressive"],
+      "breaks": "Phone-as-remote pairing",
+      "note": "Also handles some IR/Bluetooth remote pairing on certain models. Verify with the physical remote after removal."
+    },
+    {
+      "package": "com.mitv.upgrade",
+      "name": "Mi TV OTA updater",
+      "category": "ota",
+      "risk": "caution",
+      "profiles": ["aggressive"],
+      "breaks": "Firmware updates (security fixes included)",
+      "note": "Removing this stops a firmware update from reinstalling the bloat you just removed. It also stops security patches. Your call."
+    },
+    {
+      "package": "com.xiaomi.mitv.upgrade",
+      "name": "Mi TV OTA updater (alternate)",
+      "category": "ota",
+      "risk": "caution",
+      "profiles": ["aggressive"],
+      "breaks": "Firmware updates",
+      "applies_to": ["xiaomi", "mitv", "mi tv"]
+    },
+    {
+      "package": "com.google.android.tvlauncher",
+      "name": "Google TV launcher",
+      "category": "launcher",
+      "risk": "caution",
+      "profiles": ["aggressive"],
+      "requires": ["home-replacement"],
+      "breaks": "Home screen; also carries its own sponsored row",
+      "note": "Only remove if you have replaced it. Google's own launcher still shows a promo row."
+    },
+    {
+      "package": "com.google.android.videos",
+      "name": "Google TV (movies app)",
+      "category": "media",
+      "risk": "caution",
+      "profiles": ["aggressive"],
+      "breaks": "Google TV movie/series store",
+      "note": "Pure storefront unless you buy films from Google."
+    },
+    {
+      "package": "com.google.android.apps.youtube.music",
+      "name": "YouTube Music",
+      "category": "media",
+      "risk": "caution",
+      "profiles": ["aggressive"],
+      "breaks": "YouTube Music app"
+    },
+    {
+      "package": "com.google.android.play.games",
+      "name": "Google Play Games",
+      "category": "games",
+      "risk": "safe",
+      "profiles": ["light"],
+      "breaks": "Play Games overlay/achievements"
+    },
+    {
+      "package": "com.google.android.katniss",
+      "name": "Google Assistant (voice)",
+      "category": "input",
+      "risk": "protected",
+      "profiles": [],
+      "breaks": "Voice search and the remote's mic button"
+    },
+    {
+      "package": "com.google.android.apps.mediashell",
+      "name": "Chromecast built-in",
+      "category": "cast",
+      "risk": "caution",
+      "profiles": ["aggressive"],
+      "breaks": "Casting from phone/Chrome to the TV",
+      "note": "Many people use this daily. Keep unless you never cast."
+    },
+    {
+      "package": "com.google.android.tv.remote.service",
+      "name": "Google TV remote service",
+      "category": "input",
+      "risk": "caution",
+      "profiles": ["aggressive"],
+      "breaks": "Phone remote / pairing on some builds"
+    },
+    {
+      "package": "com.android.vending",
+      "name": "Google Play Store",
+      "category": "store",
+      "risk": "caution",
+      "profiles": ["aggressive"],
+      "breaks": "Installing/updating apps from Play",
+      "note": "Removing it also breaks app licence checks for paid apps. Keep unless the TV is frozen at a fixed app set."
+    },
+    {
+      "package": "com.netflix.ninja",
+      "name": "Netflix",
+      "category": "media",
+      "risk": "caution",
+      "profiles": ["aggressive"],
+      "breaks": "Netflix, including the remote's Netflix button"
+    },
+    {
+      "package": "com.amazon.amazonvideo.livingroom",
+      "name": "Prime Video",
+      "category": "media",
+      "risk": "caution",
+      "profiles": ["aggressive"],
+      "breaks": "Prime Video app"
+    },
+    {
+      "package": "com.spotify.tv.android",
+      "name": "Spotify (TV)",
+      "category": "media",
+      "risk": "caution",
+      "profiles": ["aggressive"],
+      "breaks": "Spotify app"
+    },
+    {
+      "package": "com.hotstar.tv",
+      "name": "Hotstar / JioHotstar (TV)",
+      "category": "media",
+      "risk": "caution",
+      "profiles": ["aggressive"],
+      "breaks": "Hotstar app",
+      "note": "Package name varies by region and app version. Confirm with `mitv scan` before acting."
+    },
+    {
+      "package": "in.startv.hotstar",
+      "name": "Hotstar (phone package, sometimes preinstalled)",
+      "category": "media",
+      "risk": "caution",
+      "profiles": ["aggressive"],
+      "breaks": "Hotstar app"
+    },
+    {
+      "package": "com.graymatrix.did",
+      "name": "ZEE5",
+      "category": "media",
+      "risk": "caution",
+      "profiles": ["aggressive"],
+      "breaks": "ZEE5 app"
+    },
+    {
+      "package": "com.sonyliv",
+      "name": "SonyLIV",
+      "category": "media",
+      "risk": "caution",
+      "profiles": ["aggressive"],
+      "breaks": "SonyLIV app"
+    },
+    {
+      "package": "com.jio.media.ondemand",
+      "name": "JioCinema",
+      "category": "media",
+      "risk": "caution",
+      "profiles": ["aggressive"],
+      "breaks": "JioCinema app"
+    },
+    {
+      "package": "com.mxtech.videoplayer.ad",
+      "name": "MX Player (ad-supported)",
+      "category": "media",
+      "risk": "caution",
+      "profiles": ["aggressive"],
+      "breaks": "Local video player with ads"
+    },
+    {
+      "package": "com.mitv.tvplayer",
+      "name": "Mi TV player / live TV shell",
+      "category": "system",
+      "risk": "protected",
+      "profiles": [],
+      "breaks": "Live TV / input switching"
+    },
+    {
+      "package": "com.mitv.tvservice",
+      "name": "Mi TV core service",
+      "category": "system",
+      "risk": "protected",
+      "profiles": [],
+      "breaks": "TV boots into a broken state"
+    },
+    {
+      "package": "com.mitv.system",
+      "name": "Mi TV system component",
+      "category": "system",
+      "risk": "protected",
+      "profiles": [],
+      "breaks": "System instability"
+    },
+    {
+      "package": "com.android.tv.settings",
+      "name": "TV Settings",
+      "category": "system",
+      "risk": "protected",
+      "profiles": [],
+      "breaks": "You lose the settings app"
+    },
+    {
+      "package": "com.android.systemui",
+      "name": "System UI",
+      "category": "system",
+      "risk": "protected",
+      "profiles": [],
+      "breaks": "No status bar, no navigation, no TV"
+    },
+    {
+      "package": "com.google.android.gms",
+      "name": "Google Play services",
+      "category": "system",
+      "risk": "protected",
+      "profiles": [],
+      "breaks": "Almost every app breaks; account sign-in dies"
+    },
+    {
+      "package": "com.android.bluetooth",
+      "name": "Bluetooth stack",
+      "category": "system",
+      "risk": "protected",
+      "profiles": [],
+      "breaks": "Bluetooth remote stops working - you may not be able to recover without a USB keyboard"
+    },
+    {
+      "package": "com.droidlogic.tvinput",
+      "name": "Amlogic TV input",
+      "category": "system",
+      "risk": "protected",
+      "profiles": [],
+      "breaks": "HDMI inputs / tuner"
+    }
+  ]
+}
